@@ -48,10 +48,13 @@ public class Main {
         System.out.println(books);
 
         System.out.println("Books with shorter name than 5 chars");
-        books
+
+        long count = books
             .stream()
             .filter(E -> E.getName().length() < 5)
-            .forEach(System.out::println);
+            .count();
+
+        System.out.println("Count: " + count);
 
         /* Average price of book in the list */
 
