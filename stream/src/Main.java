@@ -20,8 +20,8 @@ public class Main {
 
         System.out.println("First 100 even numbers: ");
         Stream
-            .iterate(1,E -> E + 1)
-            .filter(E -> E % 2 == 0 && E % 8 != 0)
+            .iterate(0,E -> E + 2)
+            .filter(E -> E % 8 != 0)
             .limit(100)
             .forEach(System.out::println);
 
