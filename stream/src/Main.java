@@ -1,7 +1,9 @@
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.IntStream;
-
+import java.util.OptionalDouble;
 public class Main {
     public static void main(String[] args) {
 
@@ -23,6 +25,57 @@ public class Main {
             .limit(100)
             .forEach(System.out::println);
 
+        // BOOKS STREAMS
+        List <Book> books =  IntStream.range(0, 20)
+                .mapToObj(B -> BookCreator.BookCreation())
+                .collect(Collectors.toList());
+
+        /* Alphabetic order */
+
+        System.out.println("All books:");
+        System.out.println(books);
+
+        System.out.println("Books sorted by alphabetic order:");
+
+        books
+            .stream()
+            .filter(E -> E.getPrice() < 100)
+            .sorted(Comparator.comparing(Book::getName))
+                .forEach(System.out::println);
+
+        /* Name shorter than 5 chars */
+        System.out.println("All books:");
+        System.out.println(books);
+
+        System.out.println("Books with shorter name than 5 chars");
+        books
+            .stream()
+            .filter(E -> E.getName().length() < 5)
+            .forEach(System.out::println);
+
+        /* Average price of book in the list */
+
+
+        System.out.println("All books:");
+        System.out.println(books);
+
+        OptionalDouble average = books
+            .stream()
+            .mapToInt(Book::getPrice)
+            .average();
+
+        System.out.println("Average price: " + (average.isPresent() ? average.getAsDouble() : "err"));
+
+        /* Cheaper than 500 */
+
+        System.out.println("All books:");
+        System.out.println(books);
+
+        boolean cheaper = books
+                            .stream()
+                            .anyMatch(E -> E.getPrice() > 500);
+
+        System.out.println("Are all books cheaper than 500: " + (cheaper ? "no" : "yes"));
 
     }
 }
