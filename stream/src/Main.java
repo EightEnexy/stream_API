@@ -75,7 +75,7 @@ public class Main {
                             .stream()
                             .anyMatch(E -> E.getPrice() > 500);
 
-        System.out.println("Are cheaper than 500: " + (cheaper ? "no" : "yes"));
+        System.out.println("Are all books cheaper than 500: " + (cheaper ? "no" : "yes"));
 
     }
 }
