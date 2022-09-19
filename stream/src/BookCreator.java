@@ -10,7 +10,7 @@ class BookCreator{
                             .collect(StringBuilder::new, StringBuilder::appendCodePoint,StringBuilder::append)
                             .toString();
 
-        return new Book(bookName,random.nextInt( 500 - 50) + 50);
+        return new Book(bookName,random.nextInt( 550 - 50) + 50);
 
 
     }
